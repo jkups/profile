@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>portfolio</title>
+    <title>John Kupoluyi: Software Engineer</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Signika+Negative:300,400,600,700">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -26,7 +26,7 @@
                             </svg></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav">
-                            <li class="nav-item"><a class="nav-link active" href="#about">About Me</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
                             <li class="nav-item"><a class="nav-link" href="#portfolio">My Portfolio</a></li>
                             <li class="nav-item"><a class="nav-link talk" href="#contact">Let's Talk</a></li>
                         </ul>
@@ -165,10 +165,10 @@
                 </li>
                 <li>
                     <div class="contact-form">
-                        <form>
-                            <div class="form-group"><input class="form-control" type="text" placeholder="Full Name"></div>
-                            <div class="form-group"><input class="form-control" type="email" placeholder="Email Address"></div>
-                            <div class="form-group"><textarea class="form-control" placeholder="Message"></textarea></div><button class="btn btn-primary" type="button">Send Message&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                        <form action="" method="POST">
+                            <div class="form-group"><input class="form-control" type="text" id="name" placeholder="Full Name"></div>
+                            <div class="form-group"><input class="form-control" type="email" id="replyto" placeholder="Email Address"></div>
+                            <div class="form-group"><textarea class="form-control" id="message" placeholder="Message"></textarea></div><button class="btn btn-primary" type="submit">Send Message&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
                                     <path d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z" fill="currentColor"></path>
                                 </svg></button>
                         </form>
@@ -184,6 +184,22 @@
     </section>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $('.btn-primary').on('click', function(e){
+        e.preventDefault();
+
+        $.ajax({
+          url: "https://formspree.io/f/xgepbonq",
+          method: "POST",
+          dataType: "json",
+          data: {
+            name: $('#name').val(),
+            _replyto: $('#replyto').val(),
+            message: $('#message').val()
+          }
+        });
+      })
+    </script>
 </body>
 
 </html>
