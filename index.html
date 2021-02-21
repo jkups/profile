@@ -255,6 +255,7 @@
                 <i class="fas fa-paper-plane send"></i>
                 <i class="fas fa-sync sending" style="display:none"></i>
               </button>
+              <div class="response"></div>
             </form>
           </div>
         </li>
@@ -303,9 +304,21 @@
       })
       .done(data => {
         $('#name, #replyto, #message').val('');
+        $('.response').text('Message Sent')
+        .css('backgroundColor', 'olive')
+        .delay(3000).fadeOut();
+
         $('.sending').toggle();
         $('.send').toggle();
-      });
+      })
+      .fail(data => {
+        $('.response').text('An error occured')
+        .css('backgroundColor', 'crimson')
+        .delay(3000).fadeOut();
+
+        $('.sending').toggle();
+        $('.send').toggle();
+      })
     })
   </script>
 </body>
