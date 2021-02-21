@@ -282,6 +282,7 @@
 
     $('#name, #replyto, #message').on('keyup', function(){
       $('.btn-primary').attr('disabled', true);
+      
       if($('#name').val() && $('#replyto').val() && $('#message').val())
         $('.btn-primary').attr('disabled', false);
     })
@@ -304,22 +305,21 @@
       })
       .done(data => {
         $('#name, #replyto, #message').val('');
-        $('.response').text('Message Sent')
-        .css('backgroundColor', 'olive')
-        .delay(3000).fadeOut();
-
-        $('.sending').toggle();
-        $('.send').toggle();
+        fadeInOut('Message Sent!', 'olive')
       })
       .fail(data => {
-        $('.response').text('An error occured')
-        .css('backgroundColor', 'crimson')
-        .delay(3000).fadeOut();
-
-        $('.sending').toggle();
-        $('.send').toggle();
+        fadeInOut('An error occured. Please try again.', 'crimson')
       })
     })
+
+    function fadeInOut(text, color){
+      $('.response').text(text)
+      .css('backgroundColor', color)
+      .fadeIn().delay(3000).fadeOut();
+
+      $('.sending').toggle();
+      $('.send').toggle();
+    }
   </script>
 </body>
 
