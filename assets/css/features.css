@@ -1,6 +1,5 @@
 .features-boxed {
   color: #313437;
-  border-top: 1px solid lightgrey;
   padding: 100px 0;
 }
 
@@ -77,5 +76,11 @@
   .features-boxed h5 {
     margin-bottom: 25px;
     font-size: 24px;
+  }
+}
+
+@media (min-width: 992px) {
+  .features-boxed {
+    padding: 100px 0;
   }
 }
